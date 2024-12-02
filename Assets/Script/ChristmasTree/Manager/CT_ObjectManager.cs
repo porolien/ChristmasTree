@@ -16,6 +16,7 @@ public class CT_ObjectManager : MonoBehaviour
 
     private void SpawnObjects()
     {
+        Debug.Log("Spawn");
         Instantiate(Objects[Random.Range(0,Objects.Count)], ObjectsSpawnsPos[Random.Range(0, ObjectsSpawnsPos.Count)]);
     }
 }

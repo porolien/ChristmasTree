@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CT_Object : MonoBehaviour
 {
-    //[HideInInspector]
+    [HideInInspector]
     public bool ChangeScore;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float NumberScore;
 
     [HideInInspector]
@@ -18,6 +18,9 @@ public class CT_Object : MonoBehaviour
     public bool LoseTheGame;
 
     [SerializeField]
+    private float _speed;
+
+    [SerializeField]
     private CT_ObjectScriptable _objectSerialyse;
 
     private void Awake()
@@ -25,14 +28,22 @@ public class CT_Object : MonoBehaviour
         _objectSerialyse.SetObject(this);
     }
 
-    private void Start()
-    {
-        Invoke("Interact", 2);
-    }
-
     private void Update()
     {
-        transform.Translate(new Vector3(0, 1, 1));
+        transform.Translate(new Vector3(0, -1, 0) * _speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Axe")
+        {
+            Interact();
+        }
+
+        if (other.tag == "DeadBox")
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Interact()
