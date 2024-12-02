@@ -560,7 +560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3c672130865b314e94e84f3ee9aabed, type: 3}
       propertyPath: m_Name
-      value: AXE
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3c672130865b314e94e84f3ee9aabed, type: 3}
       propertyPath: m_TagString
@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 1075853626}
   - component: {fileID: 1075853625}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
