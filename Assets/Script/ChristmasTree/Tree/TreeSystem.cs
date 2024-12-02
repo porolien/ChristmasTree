@@ -9,7 +9,7 @@ public class TreeSystem : MonoBehaviour
     private GameObject _trunksPrefab;
 
     [SerializeField]
-    private Transform _sapwnTrunkPoint;
+    private Transform _spawnTrunkPoint;
 
     [SerializeField]
     private float _trunkHeight;
@@ -51,7 +51,7 @@ public class TreeSystem : MonoBehaviour
     private void AddTrunk()
     {
         // Calcul la position pour le nouveau tronc
-        Vector3 newPosition = _sapwnTrunkPoint.position;
+        Vector3 newPosition = _spawnTrunkPoint.position;
         if (_trunksList.Count > 0)
         {
             newPosition.y = _trunksList[_trunksList.Count - 1].transform.position.y + _trunkHeight;
