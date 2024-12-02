@@ -30,6 +30,11 @@ public class CT_Object : MonoBehaviour
         Invoke("Interact", 2);
     }
 
+    private void Update()
+    {
+        transform.Translate(new Vector3(0, 1, 1));
+    }
+
     public void Interact()
     {
         if (ChangeScore)
