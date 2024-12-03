@@ -62,5 +62,7 @@ public class CT_Object : MonoBehaviour
         {
             CT_GameManager.Instance.Time.NoMoreTime();
         }
+
+        Destroy(gameObject);
     }
 }
