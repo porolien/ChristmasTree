@@ -8,6 +8,7 @@ public class CT_GameManager : MonoBehaviour
     public CT_Score Score;
     public CT_Time Time;
     public CT_UI UI;
+    public CT_Difficulty Difficulty;
 
     public void Awake()
     {
