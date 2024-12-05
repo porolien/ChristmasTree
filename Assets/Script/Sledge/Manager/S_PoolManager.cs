@@ -8,19 +8,19 @@ public class S_PoolManager : MonoBehaviour
     public class Pool
     {
         public string tag;
-        public GameObject prefab;
+        public List<GameObject> prefab = new List<GameObject>();
         public int size;
     }
 
-    public List<Pool> pools;
+    public List<Pool> pools = new List<Pool>();
     private Dictionary<string, Queue<GameObject>> objectPools;
 
     private void Awake()
     {
-        InitializePools();
+        //InitializePools();
     }
 
-    void InitializePools()
+    /*void InitializePools()
     {
         objectPools = new Dictionary<string, Queue<GameObject>>();
 
@@ -37,7 +37,7 @@ public class S_PoolManager : MonoBehaviour
 
             objectPools.Add(pool.tag, objectPool);
         }
-    }
+    }*/
 
     public GameObject GetObjectFromPool(string tag)
     {
@@ -52,8 +52,7 @@ public class S_PoolManager : MonoBehaviour
                     if (pool.tag == tag)
                     {
                         Queue<GameObject> newObjectPool = new Queue<GameObject>();
-                        GameObject obje = Instantiate(pool.prefab);
-                        objectPool.Enqueue(obje);
+                        //objectPool.Enqueue(obje);
                     }
                 }
             }
