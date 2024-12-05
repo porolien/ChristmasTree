@@ -20,12 +20,15 @@ public class S_TerrainManager : MonoBehaviour
         {
             InvokeNewTerrain();
         }
+
+        InvokeRepeating("ChangeTerrain", 1, 1);
     }
 
     private void InvokeNewTerrain()
     {
         int terrainRandom = Random.Range(0, _allTerrainsAvailable.Count);
         S_Terrain terrain = _allTerrainsAvailable[terrainRandom];
+        terrain.gameObject.SetActive(true);
         _allTerrainsAvailable.Remove(_allTerrainsAvailable[terrainRandom]);
         if (_terrainList.Count != 0)
         {
@@ -37,5 +40,19 @@ public class S_TerrainManager : MonoBehaviour
         }
 
         _terrainList.Add(terrain);
+    }
+
+    private void DestroyTerrain()
+    {
+        S_Terrain terrain = _terrainList[0];
+        _terrainList.Remove(_terrainList[0]);
+        terrain.gameObject.SetActive(false);
+        _allTerrainsAvailable.Add(terrain);
+    }
+
+    private void ChangeTerrain()
+    {
+        InvokeNewTerrain();
+        DestroyTerrain();
     }
 }
