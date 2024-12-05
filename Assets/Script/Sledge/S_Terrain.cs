@@ -6,7 +6,7 @@ public class S_Terrain : MonoBehaviour
 
     private void Awake()
     {
-        Vector3 terrainSize = GetComponent<MeshCollider>().bounds.size;
+        Vector3 terrainSize = GetComponent<Collider>().bounds.size;
         NewTerrainPos.position = transform.localPosition - new Vector3(terrainSize.x, terrainSize.y, 0);
     }
 }
