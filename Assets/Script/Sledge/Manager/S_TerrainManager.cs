@@ -20,14 +20,14 @@ public class S_TerrainManager : MonoBehaviour
         {
             InvokeNewTerrain();
         }
-
-        InvokeRepeating("ChangeTerrain", 1, 1);
     }
 
     private void InvokeNewTerrain()
     {
         int terrainRandom = Random.Range(0, _allTerrainsAvailable.Count);
         S_Terrain terrain = _allTerrainsAvailable[terrainRandom];
+        terrain.ClearEvents();
+        terrain.SledgePassNewTerrain += ChangeTerrain;
         terrain.gameObject.SetActive(true);
         _allTerrainsAvailable.Remove(_allTerrainsAvailable[terrainRandom]);
         if (_terrainList.Count != 0)
