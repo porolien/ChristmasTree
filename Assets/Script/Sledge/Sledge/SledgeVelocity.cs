@@ -9,7 +9,12 @@ public class SledgeVelocity : MonoBehaviour
     private float _propulsionSpeed;
 
     [SerializeField]
+    private float _directionnalBaseSpeed;
+
+    [SerializeField]
     private float _slopeFactor;
+
+    private float _direction;
 
     private Rigidbody _rb;
     private void Awake()
@@ -20,10 +25,16 @@ public class SledgeVelocity : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Velocity: " + _rb.linearVelocity.magnitude);
+       // Debug.Log("Velocity: " + _rb.linearVelocity.magnitude);
 
         Vector3 force = transform.up * _propulsionSpeed;
         _rb.AddForce(force, ForceMode.Acceleration);
+        if (_direction != 0)
+        {
+            force = transform.forward * _directionnalBaseSpeed * _direction;
+            _rb.AddForce(force, ForceMode.Acceleration);
+        }
+        
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1f))
         {
             Vector3 slopeDirection = Vector3.ProjectOnPlane(Vector3.down, hit.normal);
@@ -34,6 +45,12 @@ public class SledgeVelocity : MonoBehaviour
         {
             _rb.linearVelocity = _rb.linearVelocity.normalized * _maxSpeed;
         }
+    }
 
+    public void MoveDirection(float direction)
+    {
+        /*Vector3 force = transform.forward * _directionnalBaseSpeed * direction;
+        _rb.AddForce(force, ForceMode.Acceleration);*/
+        _direction = direction;
     }
 }
